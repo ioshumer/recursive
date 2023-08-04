@@ -1,14 +1,26 @@
 def print_only_even_idx(list_):
-    total_list_length = len(list_)
-    index_elements = list(range(total_list_length))
+    left_bound = 0
+    right_bound = len(list_)
+    process_data(list_, left_bound, right_bound)
 
-    def _recursive_call(list_indexes):
-        if len(list_indexes) == 0:
-            return
-        current_index = list_indexes[0]
-        print(current_index)
-        if current_index % 2 == 0:
-            print(list_[current_index])
-        _recursive_call(list_indexes[1:])
 
-    _recursive_call(index_elements)
+def process_data(list_, left_bound, right_bound):
+    if left_bound == right_bound:
+        return
+
+    pointer = left_bound
+    is_even_index = pointer % 2 == 0
+
+    if is_even_index:
+        elem = list_[pointer]
+        is_int_element = isinstance(elem, int)
+        if is_int_element:
+            print(elem)
+
+    left_bound += 1
+    process_data(list_, left_bound, right_bound)
+
+
+if __name__ == '__main__':
+    data = list(range(1, 11))
+    print_only_even_idx(data)
