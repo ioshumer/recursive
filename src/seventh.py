@@ -23,17 +23,12 @@ def process_data(list_, left_bound, right_bound,
     current_value = list_[left_bound]
 
     if current_value > first_max:
+        second_max = first_max
         first_max = current_value
+
     elif current_value == first_max or current_value > second_max:
         second_max = current_value
 
     left_bound += 1
     first_max, second_max = process_data(list_, left_bound, right_bound, first_max, second_max)
     return first_max, second_max
-
-
-if __name__ == '__main__':
-    print(define_max_number([2, 5, 4, 5, 3]))
-    print(define_max_number([2, 5]))
-    print(define_max_number([5]))
-    print(define_max_number([]))
